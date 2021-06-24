@@ -17,9 +17,9 @@ protocol CartPresenterDelegate: AnyObject {
 typealias CartDelegate = CartPresenterDelegate & UIViewController
 
 class CartPresenter {
-    weak var delegate: CartDelegate?
+    private weak var delegate: CartDelegate?
     
-    public func setViewDelegate(delegate: CartDelegate){
+    init(delegate: CartDelegate) {
         self.delegate = delegate
     }
     

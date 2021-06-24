@@ -17,10 +17,10 @@ typealias MovieDetailDelegate = MoviePresenterDelegate & UIViewController
 
 class MovieDetailPresenter {
     
-    weak var delegate: MovieDetailDelegate?
+    private weak var delegate: MovieDetailDelegate?
     var movieExist = true
     
-    public func setViewDelegate(delegate: MovieDetailDelegate){
+    init(delegate: MovieDetailDelegate) {
         self.delegate = delegate
     }
     

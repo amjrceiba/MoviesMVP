@@ -20,7 +20,7 @@ class TabBarController: UITabBarController {
         //create cart controller
         let cartVC = CartViewController()
         cartVC.title = "Cart"
-        cartVC.tabBarItem.image = UIImage(systemName: "film")
+        cartVC.tabBarItem.image = UIImage(systemName: "cart")
         //add view controllers to tabBar controller
         self.setViewControllers([moviesVC, cartVC], animated: false)
         
@@ -28,11 +28,11 @@ class TabBarController: UITabBarController {
         updateCartBadge(notification: Notification(name: Notification.Name("updateCartBadge")))
     }
     
-    func addObserver(){
+    private func addObserver(){
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateCartBadge(notification:)), name: Notification.Name("updateCartBadge"), object: nil)
     }
     
-    @objc func updateCartBadge(notification: Notification) {
+    @objc private func updateCartBadge(notification: Notification) {
         if DBController().getMovies().count > 0{
             tabBar.items?[1].badgeValue = "\(DBController().getMovies().count)"
         }else{

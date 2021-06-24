@@ -9,7 +9,7 @@ import UIKit
 
 class CartViewController: ViewController<CartView> {
 
-    private let cartPresenter = CartPresenter()
+    private var cartPresenter: CartPresenter?
     
     private var movies: [Movie] = [] {
         didSet {
@@ -28,15 +28,14 @@ class CartViewController: ViewController<CartView> {
     }
     
     func setDelegates(){
-        cartPresenter.setViewDelegate(delegate: self)
+        cartPresenter = CartPresenter(delegate: self)
         customView.tableview.delegate = self
         customView.tableview.dataSource = self
     }
     
     func loadMovies(){
-        cartPresenter.loadMovies()
+        cartPresenter!.loadMovies()
     }
-
 }
 
 extension CartViewController: CartPresenterDelegate, CartTableViewCellDelegate, UITableViewDelegate, UITableViewDataSource{
@@ -50,7 +49,7 @@ extension CartViewController: CartPresenterDelegate, CartTableViewCellDelegate, 
     func presentRemoveMovieAlert(title: String, message: String, movie: Movie) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            self.cartPresenter.removeMovie(movie: movie)
+            self.cartPresenter!.removeMovie(movie: movie)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -74,6 +73,6 @@ extension CartViewController: CartPresenterDelegate, CartTableViewCellDelegate, 
     }
     
     func cartTableViewCell(_ cartTableviewCell: CartTableViewCell, movie: Movie) {
-        cartPresenter.removeButtonPressed(movie: movie)
+        cartPresenter!.removeButtonPressed(movie: movie)
     }
 }

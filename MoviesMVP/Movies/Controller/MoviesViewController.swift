@@ -14,7 +14,8 @@ class MoviesViewController: ViewController<MoviesView> {
             customView.tableview.reloadData()
         }
     }
-    private let moviesPresenter = MoviesPresenter()
+    
+    private var moviesPresenter: MoviesPresenter?
     
     override func viewDidLoad() {
         setDelegates()
@@ -24,11 +25,11 @@ class MoviesViewController: ViewController<MoviesView> {
     func setDelegates(){
         customView.tableview.delegate = self
         customView.tableview.dataSource = self
-        moviesPresenter.setViewDelegate(delegate: self)
+        moviesPresenter = MoviesPresenter(delegate: self)
     }
     
     func fetchMovies(){
-        moviesPresenter.fetchMovies()
+        moviesPresenter!.fetchMovies()
     }
 }
 
@@ -57,7 +58,6 @@ extension MoviesViewController: MoviesPresenterDelegate, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        moviesPresenter.didTap(movie: movies[indexPath.row])
-
+        moviesPresenter!.didTap(movie: movies[indexPath.row])
     }
 }

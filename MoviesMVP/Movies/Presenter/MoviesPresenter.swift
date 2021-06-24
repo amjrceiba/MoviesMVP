@@ -17,19 +17,20 @@ typealias MoviesDelegate = MoviesPresenterDelegate & UIViewController
 
 class MoviesPresenter{
     
-    weak var delegate: MoviesDelegate?
+    private weak var delegate: MoviesDelegate?
+    
+    init(delegate: MoviesDelegate) {
+        self.delegate = delegate
+    }
     
     public func fetchMovies(){
         Networking().fetchMovies { movies in
-            self.delegate?.presentMovies(movies: movies)
+            self.delegate!.presentMovies(movies: movies)
         }
     }
     
     public func didTap(movie: Movie){
-        self.delegate?.presentMovie(movie: movie)
+        self.delegate!.presentMovie(movie: movie)
     }
     
-    public func setViewDelegate(delegate: MoviesDelegate){
-        self.delegate = delegate
-    }
 }

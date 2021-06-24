@@ -10,8 +10,8 @@ import UIKit
 
 class MovieDetailViewController: ViewController<MovieDetailView> {
     
-    let movie: Movie
-    private let moviePresenter = MovieDetailPresenter()
+    private let movie: Movie
+    private var moviePresenter: MovieDetailPresenter?
     
     init(with movie: Movie) {
         self.movie = movie
@@ -26,21 +26,17 @@ class MovieDetailViewController: ViewController<MovieDetailView> {
     
     override func viewDidLoad() {
         navigationItem.title = self.movie.originalTitle
-        setDelegates()
+        self.moviePresenter = MovieDetailPresenter(delegate: self)
         checkAddButton()
     }
-    
-    func setDelegates(){
-        moviePresenter.setViewDelegate(delegate: self)
-    }
-    
-    func checkAddButton(){
-        moviePresenter.checkAddButton(movie: movie)
+        
+    private func checkAddButton(){
+        moviePresenter!.checkAddButton(movie: movie)
     }
     
     @objc
-    func barButtonTapped(){
-        moviePresenter.addButtonTap(movie: movie)
+    private func barButtonTapped(){
+        moviePresenter!.addButtonTap(movie: movie)
     }
 }
 

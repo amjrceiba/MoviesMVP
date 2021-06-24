@@ -87,86 +87,114 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE8736022683692A00300911 /* Movies */ = {
+		CE824C572684000300C1D218 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				CE6DDD66268208E900099CBE /* MoviesPresenter.swift */,
-				CE8736002682974000300911 /* MovieDetailPresenter.swift */,
+				CE824C622684013700C1D218 /* Controller */,
+				CEA8ED5D267CCA5B00274616 /* DataAccess */,
+				CEA8ED5E267CCA6600274616 /* Networking */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CE824C582684000900C1D218 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				CE824C5A2684002300C1D218 /* Model */,
+				CE824C5B2684002E00C1D218 /* View */,
+				CE824C5D2684003900C1D218 /* Presenter */,
+				CE824C5C2684003300C1D218 /* Controller */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		CE824C592684001100C1D218 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				CE824C612684007900C1D218 /* Model */,
+				CE824C602684007500C1D218 /* View */,
+				CE824C5F2684006F00C1D218 /* Presenter */,
+				CE824C5E2684006A00C1D218 /* Controller */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
 		};
-		CE8736032683869C00300911 /* Cart */ = {
+		CE824C5A2684002300C1D218 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE87360626838C2800300911 /* CartPresenter.swift */,
-			);
-			path = Cart;
-			sourceTree = "<group>";
-		};
-		CEA8ED56267CCA1C00274616 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				CEA8ED5D267CCA5B00274616 /* DataAccess */,
-				CEA8ED5E267CCA6600274616 /* Networking */,
-				CEA8ED5F267CCA6D00274616 /* Cart */,
-				CEA8ED60267CCA7200274616 /* Movie */,
+				CE6DDD642682088800099CBE /* CartTableViewCellDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		CEA8ED57267CCA2500274616 /* View */ = {
+		CE824C5B2684002E00C1D218 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEA8ED62267CCA8400274616 /* Movie */,
-				CEA8ED61267CCA8100274616 /* Cart */,
+				CE6DDD602682085700099CBE /* CartTableViewCell.swift */,
+				CE6DDD612682085700099CBE /* CartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		CEA8ED58267CCA2B00274616 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CEA8ED5C267CCA4900274616 /* Core */,
-				CEA8ED5B267CCA4500274616 /* Movies */,
-				CEA8ED5A267CCA4100274616 /* Cart */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		CEA8ED59267CCA3000274616 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				CE8736022683692A00300911 /* Movies */,
-				CE8736032683869C00300911 /* Cart */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		CEA8ED5A267CCA4100274616 /* Cart */ = {
+		CE824C5C2684003300C1D218 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CE87360426838BE000300911 /* CartViewController.swift */,
 			);
-			path = Cart;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		CEA8ED5B267CCA4500274616 /* Movies */ = {
+		CE824C5D2684003900C1D218 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE87360626838C2800300911 /* CartPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CE824C5E2684006A00C1D218 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CE6DDD6826820AE100099CBE /* MoviesViewController.swift */,
 				CE8735FE2682811200300911 /* MovieDetailViewController.swift */,
 			);
-			path = Movies;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		CEA8ED5C267CCA4900274616 /* Core */ = {
+		CE824C5F2684006F00C1D218 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE6DDD66268208E900099CBE /* MoviesPresenter.swift */,
+				CE8736002682974000300911 /* MovieDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CE824C602684007500C1D218 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE6DDD5C2682084800099CBE /* MovieDetailView.swift */,
+				CE6DDD5A2682084800099CBE /* MoviesView.swift */,
+				CE6DDD5B2682084800099CBE /* MovieTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE824C612684007900C1D218 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEA8ED65267CCE0900274616 /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE824C622684013700C1D218 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				CE6DDD6A26820CCD00099CBE /* TabBarController.swift */,
 				CECB036C267CC457001A6750 /* ViewController.swift */,
 			);
-			path = Core;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CEA8ED5D267CCA5B00274616 /* DataAccess */ = {
@@ -186,41 +214,6 @@
 				CEA8ED68267CCE1500274616 /* Preferences.swift */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		CEA8ED5F267CCA6D00274616 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				CE6DDD642682088800099CBE /* CartTableViewCellDelegate.swift */,
-			);
-			path = Cart;
-			sourceTree = "<group>";
-		};
-		CEA8ED60267CCA7200274616 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				CEA8ED65267CCE0900274616 /* Movie.swift */,
-			);
-			path = Movie;
-			sourceTree = "<group>";
-		};
-		CEA8ED61267CCA8100274616 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				CE6DDD602682085700099CBE /* CartTableViewCell.swift */,
-				CE6DDD612682085700099CBE /* CartView.swift */,
-			);
-			path = Cart;
-			sourceTree = "<group>";
-		};
-		CEA8ED62267CCA8400274616 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				CE6DDD5C2682084800099CBE /* MovieDetailView.swift */,
-				CE6DDD5A2682084800099CBE /* MoviesView.swift */,
-				CE6DDD5B2682084800099CBE /* MovieTableViewCell.swift */,
-			);
-			path = Movie;
 			sourceTree = "<group>";
 		};
 		CEA8ED63267CCC2000274616 /* Anticorruption */ = {
@@ -258,10 +251,9 @@
 		CECB0367267CC457001A6750 /* MoviesMVP */ = {
 			isa = PBXGroup;
 			children = (
-				CEA8ED56267CCA1C00274616 /* Model */,
-				CEA8ED57267CCA2500274616 /* View */,
-				CEA8ED58267CCA2B00274616 /* Controller */,
-				CEA8ED59267CCA3000274616 /* Presenter */,
+				CE824C572684000300C1D218 /* Shared */,
+				CE824C582684000900C1D218 /* Cart */,
+				CE824C592684001100C1D218 /* Movies */,
 				CECB0368267CC457001A6750 /* AppDelegate.swift */,
 				CECB036A267CC457001A6750 /* SceneDelegate.swift */,
 				CECB036E267CC457001A6750 /* Main.storyboard */,
