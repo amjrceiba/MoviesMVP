@@ -11,6 +11,7 @@ import UIKit
 protocol CartPresenterDelegate: AnyObject {
     func presentMovies(movies: [Movie])
     func presentRemoveMovieAlert(title: String, message: String, movie: Movie)
+    func notifyObserver()
     func presentErrorAlert(title: String, message: String)
 }
 
@@ -35,17 +36,12 @@ class CartPresenter {
     public func removeMovie(movie: Movie){
         do{
             try DBController().removeMovie(movie: movie)
+            delegate?.notifyObserver()
         }
         catch{
             delegate?.presentErrorAlert(title: "Error", message: error.localizedDescription)
         }
         
-        self.notifyObserver()
         self.loadMovies()
     }
-    
-    func notifyObserver(){
-        NotificationCenter.default.post(name: Notification.Name("updateCartBadge"), object: nil)
-    }
-    
 }

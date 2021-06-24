@@ -41,6 +41,7 @@ class MovieDetailViewController: ViewController<MovieDetailView> {
 }
 
 extension MovieDetailViewController: MoviePresenterDelegate{
+    
     func presentAddButton(addButton: Bool) {
         let barButton = addButton ? UIBarButtonItem.SystemItem.trash : UIBarButtonItem.SystemItem.add
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: barButton, target: self, action: #selector(barButtonTapped))
@@ -51,4 +52,13 @@ extension MovieDetailViewController: MoviePresenterDelegate{
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func popView(){
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func notifyObserver(){
+        NotificationCenter.default.post(name: Notification.Name("updateCartBadge"), object: nil)
+    }
+    
 }

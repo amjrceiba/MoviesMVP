@@ -55,6 +55,10 @@ extension CartViewController: CartPresenterDelegate, CartTableViewCellDelegate, 
         self.present(alert, animated: true, completion: nil)
     }
     
+    func notifyObserver() {
+        NotificationCenter.default.post(name: Notification.Name("updateCartBadge"), object: nil)
+    }
+    
     func presentErrorAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

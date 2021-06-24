@@ -10,6 +10,8 @@ import UIKit
 
 protocol MoviePresenterDelegate: AnyObject {
     func presentAddButton(addButton: Bool)
+    func popView()
+    func notifyObserver()
     func showErrorAlert(title: String, message: String)
 }
 
@@ -27,7 +29,6 @@ class MovieDetailPresenter {
     public func checkAddButton(movie: Movie){
         do{
             movieExist = try DBController().checkForMovie(movie: movie)
-            print(movieExist)
             delegate?.presentAddButton(addButton: movieExist)
         }
         catch{
@@ -46,21 +47,13 @@ class MovieDetailPresenter {
     
     func addMovie(movie: Movie)throws{
         try DBController().addMovie(movie: movie)
-        notifyObserver()
-        popView()
+        delegate?.notifyObserver()
+        delegate?.popView()
     }
     
     func removeMovie(movie: Movie)throws{
         try DBController().removeMovie(movie: movie)
-        notifyObserver()
-        popView()
-    }
-    
-    func popView(){
-        delegate?.navigationController?.popViewController(animated: true)
-    }
-    
-    func notifyObserver(){
-        NotificationCenter.default.post(name: Notification.Name("updateCartBadge"), object: nil)
+        delegate?.notifyObserver()
+        delegate?.popView()
     }
 }
